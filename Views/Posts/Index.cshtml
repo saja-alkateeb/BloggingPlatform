@@ -1,0 +1,32 @@
+﻿@model IEnumerable<BloggingPlatform.Models.Post>
+
+<h2>Posts</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Created At</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => post.Title)</td>
+                <td>@Html.DisplayFor(modelItem => post.Content)</td>
+                <td>@Html.DisplayFor(modelItem => post.CreatedAt)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@post.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@post.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
